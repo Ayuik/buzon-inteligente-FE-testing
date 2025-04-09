@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import { Home } from "../src/components/home/Home"; 
 
+
 describe("Home component", () => {
   it("should render both buttons with correct text", () => {
     render(<Home />);
