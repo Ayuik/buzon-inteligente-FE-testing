@@ -4,3 +4,7 @@
 .font-bree {
     font-family: 'Bree Serif', serif;
   }
+  :root {
+    --custom-blue: #00174B;
+    --custom-light-blue: #EEF0FF;
+  }
