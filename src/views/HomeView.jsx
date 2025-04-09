@@ -4,13 +4,12 @@ export const HomeView = () => {
   return (
     <>
 {/*         <Header /> */}
-        <div className="flex w-full h-full">
-            <div id="img-home" className="w-1/2">
-                {/* <img src="/img/Captura.PNG" alt="" className="bg-cover"/> */}
+        <div className="flex flex-col sm:flex-row w-full h-full">
+            <div id="img-home" className="w-full sm:w-1/2">
+                <img src="/img/Captura.PNG" alt="" className="bg-cover"/>
             </div>
             <Home />
         </div>
-       {/*  <Footer /> */}
     </>
   );
 }
