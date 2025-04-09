@@ -1,6 +1,26 @@
-@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap");
+@import "tailwindcss";
 
-.font-bree {
-    font-family: 'Bree Serif', serif;
+
+@theme {
+  --font-bree: 'Bree Serif', sans-serif;
+
+  /* TODO: add true colors */
+  --color-primary: #001d3d;
+  --color-secondary: #326bbb;    
+  --color-third: #ffcc05;
+  --color-accent: #dd1c1a;
+
+}
+
+/* reset default */
+@layer base {
+  * {
+    @apply m-0 p-0 box-border;
   }
+
+
+  body {
+    @apply font-bree;
+  }
+}
