@@ -1,12 +1,9 @@
-import { FormularioRegistro } from './components/FormularioRegistro';
-import './styles/styles.css';
-import React from 'react';
+import { AppRouter } from "./routing/AppRouter";
+import "./styles/styles.css";
+
 function App() {
-  return (
-    <>
-     <FormularioRegistro />
-    </>
-  )
+  
+  return <AppRouter />;
 }
 
-export default App
+export default App;
