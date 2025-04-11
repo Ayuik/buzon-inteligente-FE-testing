@@ -3,7 +3,7 @@ import { describe, it, expect } from "vitest";
 import { Footer } from "../src/components/Footer"; 
 
 describe("Footer", () => {
-  it("should exist",() => {
+  it(() => {
     render(<Footer />);
 
     expect(screen.getByText("2025 © Arkímedes. Todos los derechos reservados")).toBeInTheDocument();

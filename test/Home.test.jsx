@@ -4,7 +4,7 @@ import { Home } from "../src/components/home/Home";
 import { Footer } from "../src/components/Footer"; 
 
 describe("Home component", () => {
-  it("should render both buttons with correct text", () => {
+  it(() => {
     render(<Home />);
     
     const loginButton = screen.getByRole("button", { name: /Iniciar sesión/i });

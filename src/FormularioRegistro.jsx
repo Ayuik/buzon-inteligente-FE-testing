@@ -19,13 +19,13 @@ export const FormularioRegistro = () => {
           <input
             type="text"
             placeholder="Nombre:"
-            {...register('dni', { required: 'Campo obligatorio' })}
+            {...register('nombre', { required: 'Campo obligatorio' })}
             className="w-full px-4 py-2 rounded-md border border-gray-300 bg-[#EEF0FF] text-[#00174B] focus:outline-none focus:ring-2 "
           />
           <input
             type="text"
             placeholder="Apellidos:"
-            {...register('dni', { required: 'Campo obligatorio' })}
+            {...register('apellidos', { required: 'Campo obligatorio' })}
             className="w-full px-4 py-2 rounded-md border border-gray-300 bg-[#EEF0FF] text-[#00174B] focus:outline-none focus:ring-2 "
           />
           <input
