@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export const ProfileCard = () => {
     const [editable, setEditable] = useState(false);
+    // Datos de ejemplo - llamada a la API
     const [formData, setFormData] = useState({
         name: 'John',
         surname: 'Doe',
