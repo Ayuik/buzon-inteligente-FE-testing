@@ -1,19 +1,19 @@
 import { createBrowserRouter } from "react-router-dom";
-//import { Layout } from "../Layout";
 //import { ExampleRoute } from "./routes/ExampleRoute";
 import {PackageDashboardRoute} from "./routes/PackageDashboardRoute";
+import { Layout } from "../components/Layouts/Layout";
 
 // TODO: Descomenta los campos y rellenalos con una ruta válida
 export const router = createBrowserRouter(
     [
         {
             path: "/",
-            // element: < Layout/>,
-            // children: [ExampleRoute]
+            element: < Layout/>,
+            //children: [ExampleRoute]
         },
         {
             path: "/packages",
-            // element: < Layout/>,
+            element: < Layout/>,
             children: [PackageDashboardRoute]
         },
     ],
