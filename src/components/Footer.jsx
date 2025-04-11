@@ -2,8 +2,8 @@ import React from 'react';
 
 export const Footer = () => {
   return (
-    <footer className="bg-[#00328C] text-white text-center p-4 mt-10 font-bree">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center text-sm">
+    <footer className="bg-[#00328C] text-white text-center p-4 font-bree">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center  text-sm min-h-[80px]">
         <div className="md:text-left text-center w-full md:w-1/2 mb-2 md:mb-0">
           <p>2025 © Arkímedes. Todos los derechos reservados</p>
         </div>
