@@ -1,6 +1,6 @@
-import ProfileCard from "../../components/profile/ProfileCard";
-import Navbar from "../../components/navbar";
-import Footer from "../../components/Footer";
+import { ProfileCard } from "../../components/profile/ProfileCard";
+import { Navbar } from "../../components/navbar";
+import { Footer } from "../../components/Footer";
 
 export const MyAccountPage = () => {
     return (

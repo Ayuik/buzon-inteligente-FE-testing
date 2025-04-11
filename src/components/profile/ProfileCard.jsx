@@ -1,5 +1,5 @@
-import ProfileField from "./ProfileField";
-import Button from "../Button";
+import { ProfileField } from "./ProfileField";
+import { Button } from "./Button";
 import { useState } from "react";
 
 export const ProfileCard = () => {
