@@ -41,7 +41,7 @@ export const PackageDetailsCard = ({ pkg }) => {
           </div>
         </div>
         <div className="flex p-4 justify-center sm:p-0">
-          <Link
+          <Link data-testid="packages-link"
             className="my-4 sm:my-0 sm:mx-auto bg-[rgba(0,50,140,0.93)] text-[#FFFFFF] rounded-xl"
             to="/user/packages"
           >
