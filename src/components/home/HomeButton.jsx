@@ -1,4 +1,3 @@
-
 export const HomeButton = ({action, text}) => {
 
   return (

@@ -8,10 +8,9 @@ export const HomeView = () => {
 
   const isRoot = location.pathname === "/";
   return (
-    <>
         <div className="flex flex-col sm:flex-row w-full h-full">
             <div id="img-home" className="w-full sm:w-1/2">
-                <img src="/img/Captura.PNG" alt="" className="bg-cover"/>
+                <img src="/img/Captura.PNG" alt="" className=" h-full object-cover"/>
             </div>
             <div className="w-full sm:w-1/2 flex flex-col items-center justify-center">
               {isRoot && (
@@ -23,6 +22,5 @@ export const HomeView = () => {
               <Outlet />
             </div>
         </div>
-    </>
   );
 }
