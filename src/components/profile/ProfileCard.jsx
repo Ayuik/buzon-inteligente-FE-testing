@@ -11,6 +11,7 @@ export const ProfileCard = () => {
     dni: "12345678F",
     email: "paquitopp@gmail.com",
     password: "**********",
+    confirmPassword: "",
     credential: "1234567ASD",
   });
 
@@ -63,6 +64,15 @@ export const ProfileCard = () => {
         onChange={handleChange}
         name="password"
       />
+      {editable && formData.password && (
+      <ProfileField
+        label="Confirmar contraseña:"
+        value={formData.confirmPassword}
+        editable={editable}
+        onChange={handleChange}
+        name="confirmPassword"
+      />
+      )}
       <ProfileField
         label="Credencial Permanente:"
         value={formData.credential}
