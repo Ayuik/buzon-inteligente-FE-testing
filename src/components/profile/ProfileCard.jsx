@@ -12,8 +12,10 @@ export const ProfileCard = () => {
     email: "paquitopp@gmail.com",
     password: "**********",
     confirmPassword: "",
-    credential: "1234567ASD",
+    credential: "",
   });
+
+  const [credentialGenerated, setCredentialGenerated] = useState(!!formData.credential);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,11 +23,26 @@ export const ProfileCard = () => {
   };
 
   const handleEdit = () => setEditable(true);
-  const handleCancel = () => setEditable(false);
-  const handleSave = () => {
-    // aqui iría el PUT a la API
+  const handleCancel = () => {
+    setFormData((prev) => ({ ...prev, password:"", confirmPassword: "" }));
     setEditable(false);
   };
+  const handleSave = () => {
+    if (formData.password && formData.password !== formData.confirmPassword) {
+      alert("Las contraseñas no coinciden");
+      return;
+    }
+    // aqui iría el PUT a la API
+    alert("Datos guardados correctamente");
+    setEditable(false);
+  };
+
+  const handleGenerateCredential = () => {
+    // aqui iría la llamada a la API para generar la credencial
+    const fakecredential = "1234567890";
+    setFormData((prev) => ({ ...prev, credential: fakecredential }));
+    setCredentialGenerated(true);
+  }
 
   return (
     <div className="bg-[rgba(190,199,255,0.28)] p-6 rounded-[48px] shadow-md max-w-md mx-auto mt-10 font-bree sm:p-12 space-y-10 ">
@@ -78,6 +95,11 @@ export const ProfileCard = () => {
         value={formData.credential}
         editable={false}
       />
+      {!formData.credential && !editable && (
+        <div className="flex justify-start">
+          <Button text="Generar credencial" onClick={handleGenerateCredential} />
+        </div>
+      )}
 
       <div className="flex justify-end space-x-2 mt-4">
         {editable ? (
