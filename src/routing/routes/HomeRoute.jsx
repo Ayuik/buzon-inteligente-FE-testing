@@ -1,6 +1,6 @@
 import { HomeView } from "../../views/HomeView";
 import { RegisterForm } from "../../components/RegisterForm";
-{/* TODO: include login form import */}
+import { LoginForm } from "../../components/loginForm/loginForm";
 
 export const HomeRoute = {
     path: "/",
@@ -14,11 +14,11 @@ export const HomeRoute = {
             path: "register",
             element: <RegisterForm />
         },
-/*      TODO: discomment this to include login form
+
         {
             path: "login",
             element: <LoginForm />
         }, 
-*/
+
     ]
 }  
