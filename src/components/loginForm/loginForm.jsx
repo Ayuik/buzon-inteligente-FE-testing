@@ -1,10 +1,11 @@
 import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { LoginSuccessPopover } from "../LoginSuccessPopover";
-
+import { login as loginService} from "../../Services/AuthService" 
 export function LoginForm() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [formErrors, setFormErrors] = useState({ email: "", password: "" });
+  const [loginError, setLoginError] = useState("");
   const popoverRef = useRef(null);
 
   const handleChange = (event) => {
@@ -27,13 +28,22 @@ export function LoginForm() {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoginError("");
+
     if (!formErrors.email && !formErrors.password) {
-      const popover = popoverRef.current;
-      if (popover) {
-        popover.classList.remove("opacity-0", "invisible");
-        popover.classList.add("opacity-100", "visible");
+      try {
+        const { token } = await loginService(formData.email, formData.password);
+        localStorage.setItem("token", token);
+
+        const popover = popoverRef.current;
+        if (popover) {
+          popover.classList.remove("opacity-0", "invisible");
+          popover.classList.add("opacity-100", "visible");
+        }
+      } catch (err) {
+        setLoginError( "No se ha podido conectar con el servidor.");
       }
     }
   };
@@ -53,8 +63,13 @@ export function LoginForm() {
         </div>
 
         <div id="inputs-form" className="mt-[30px]">
-          <input id="input-email" type="email" name="email" placeholder="Correo electrónico:" onChange={handleChange} className="size-full p-[18px] border border-[#737373] border-solid rounded-[8px] ml-[32px] mr-[32px] w-[552px] h-[64px] mb-[10px] text-[12px] placeholder-gray-400 font-[bree-serif]" /> {formErrors.email && (<p id="error-email" className="text-red-500 text-sm ml-[32px]">{formErrors.email}</p>)}
-          <input id="input-password" type="password" name="password" placeholder="Contraseña:" value={formData.password} onChange={handleChange} className="size-full p-[18px] border border-[#737373] border-solid rounded-[8px] ml-[32px] mr-[32px] w-[552px] h-[64px] mb-[10px] text-[12px] placeholder-gray-400 font-[bree-serif]" /> {formErrors.password && (<p id="error-password" className="text-red-500 text-sm ml-[32px]">{formErrors.password}</p>)}
+          <input id="input-email" type="email" name="email" placeholder="Correo electrónico:" onChange={handleChange} className="size-full p-[18px] border border-[#737373] border-solid rounded-[8px] ml-[32px] mr-[32px] w-[552px] h-[64px] mb-[10px] text-[12px] placeholder-gray-400 font-[bree-serif]" />
+          {formErrors.email && (<p id="error-email" className="text-red-500 text-sm ml-[32px]">{formErrors.email}</p>)}
+
+          <input id="input-password" type="password" name="password" placeholder="Contraseña:" value={formData.password} onChange={handleChange} className="size-full p-[18px] border border-[#737373] border-solid rounded-[8px] ml-[32px] mr-[32px] w-[552px] h-[64px] mb-[10px] text-[12px] placeholder-gray-400 font-[bree-serif]" />
+          {formErrors.password && (<p id="error-password" className="text-red-500 text-sm ml-[32px]">{formErrors.password}</p>)}
+
+          {loginError && <p id="login-error" className="text-red-600 text-sm ml-[32px] mt-2">{loginError}</p>}
         </div>
       </div>
 
