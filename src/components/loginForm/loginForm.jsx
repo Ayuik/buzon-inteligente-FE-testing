@@ -19,7 +19,7 @@ export function LoginForm() {
     }
 
 
-    
+
     return (
         <form class="flex flex-col items-center justify-center h-screen" onSubmit = { handleSubmit }>
             <div className = "form-login" class="flex flex-col items-center justify-center p-[25px] bg-[#bec7ff47] rounded-[48px] w-[616px] h-[500px]"> 
