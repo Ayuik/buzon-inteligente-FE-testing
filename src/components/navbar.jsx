@@ -6,7 +6,9 @@ import dropdownIcon from "../assets/dropdown.svg";
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
-
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+  };
   const isHome = location.pathname === "/" || location.pathname === "/login" || location.pathname === "/register";
   const isLoggedIn = !!localStorage.getItem("token");
 
@@ -24,7 +26,7 @@ export const Navbar = () => {
               <li><Link to="/packages" className="hover:underline">Mis paquetes</Link></li>
               <li><Link to="/notifications" className="hover:underline">Mis notificaciones</Link></li>
               <li><Link to="/account" className="hover:underline">Mi cuenta</Link></li>
-              <li><Link to="/" className="hover:underline">Cerrar sesión</Link></li>
+              <li><Link to="/" onClick={handleLogout} className="hover:underline">Cerrar sesión</Link></li>
             </ul>
             <div className="md:hidden relative">
             <button onClick={() => setMenuOpen(!menuOpen)} className="cursor-pointer">
@@ -43,7 +45,7 @@ export const Navbar = () => {
                     <Link to="/account" className="block px-4 py-2 hover:bg-white hover:text-[#002f86]">Mi cuenta</Link>
                   </li>
                   <li onClick={() => setMenuOpen(false)}>
-                    <Link to="/" className="block px-4 py-2 hover:bg-white hover:text-[#002f86]">Cerrar sesión</Link>
+                    <Link to="/" onClick={handleLogout} className="block px-4 py-2 hover:bg-white hover:text-[#002f86]">Cerrar sesión</Link>
                   </li>
                 </ul>
               )}
