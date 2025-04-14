@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap");
 @import "tailwindcss";
 
+:root {
+  width: 100vw;
+  height: 100vh;
+}
+
 .font-bree {
   font-family: 'Bree Serif', serif;
 }
