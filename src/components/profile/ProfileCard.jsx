@@ -15,22 +15,71 @@ export const ProfileCard = () => {
   } = useProfileForm();
 
   return (
-<div className="bg-[rgba(190,199,255,0.28)] p-6 rounded-[48px] shadow-md max-w-md mx-auto mt-10 mb-10 font-bree sm:p-12 space-y-10 ">
-      <ProfileField label="Nombre:" value={formData.name} editable={editable} onChange={handleChange} name="name" error={errors.name} />
-      <ProfileField label="Apellidos:" value={formData.surname} editable={editable} onChange={handleChange} name="surname" error={errors.surname} />
-      <ProfileField label="DNI:" value={formData.dni} editable={editable} onChange={handleChange} name="dni" error={errors.dni} />
-      <ProfileField label="Correo Electrónico:" value={formData.email} editable={editable} onChange={handleChange} name="email" error={errors.email} />
-      <ProfileField label="Contraseña:" value={formData.password} editable={editable} onChange={handleChange} name="password" error={errors.password} />
+    <div className="bg-[rgba(190,199,255,0.28)] p-[1.5rem] rounded-[3rem] shadow-md max-w-md mx-auto mt-[2.5rem] font-bree sm:p-[3rem] space-y-[2.5rem]">
+      <ProfileField
+        label="Nombre:"
+        value={formData.name}
+        editable={editable}
+        onChange={handleChange}
+        name="name"
+        error={errors.name}
+      />
+      <ProfileField
+        label="Apellidos:"
+        value={formData.surname}
+        editable={editable}
+        onChange={handleChange}
+        name="surname"
+        error={errors.surname}
+      />
+      <ProfileField
+        label="DNI:"
+        value={formData.dni}
+        editable={editable}
+        onChange={handleChange}
+        name="dni"
+        error={errors.dni}
+      />
+      <ProfileField
+        label="Correo Electrónico:"
+        value={formData.email}
+        editable={editable}
+        onChange={handleChange}
+        name="email"
+        error={errors.email}
+      />
+      <ProfileField
+        label="Contraseña:"
+        value={formData.password}
+        editable={editable}
+        onChange={handleChange}
+        name="password"
+        error={errors.password}
+      />
       {editable && formData.password && (
-        <ProfileField label="Confirmar contraseña:" value={formData.confirmPassword} editable={editable} onChange={handleChange} name="confirmPassword" error={errors.confirmPassword} />
+        <ProfileField
+          label="Confirmar contraseña:"
+          value={formData.confirmPassword}
+          editable={editable}
+          onChange={handleChange}
+          name="confirmPassword"
+          error={errors.confirmPassword}
+        />
       )}
-      <ProfileField label="Credencial Permanente:" value={formData.credential} editable={false} />
+      <ProfileField
+        label="Credencial Permanente:"
+        value={formData.credential}
+        editable={false}
+      />
       {!formData.credential && !editable && (
         <div className="flex justify-start">
-          <Button text="Generar credencial" onClick={handleGenerateCredential} />
+          <Button
+            text="Generar credencial"
+            onClick={handleGenerateCredential}
+          />
         </div>
       )}
-      <div className="flex justify-end space-x-2 mt-4">
+      <div className="flex justify-end gap-[0.5rem] mt-[1rem]">
         {editable ? (
           <>
             <Button text="Guardar cambios" onClick={handleSave} />
