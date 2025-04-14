@@ -102,8 +102,6 @@ export function LoginForm() {
       )}
         </div>
       </div>
-
-      
     </form>
   );
 }
