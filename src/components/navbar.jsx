@@ -7,12 +7,14 @@ export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
-  const isHome = location.pathname === "/";
+  const isHome = location.pathname === "/" || location.pathname === "/login" || location.pathname === "/register";
+  const isLoggedIn = !!localStorage.getItem("token");
+
 
   return (
     <nav className="bg-[#00328C] text-white px-6 py-4">
       <div className="flex justify-between items-center">
-        <Link to="/">
+      <Link to={isLoggedIn ? "/packages" : "/"}>
           <img src={logo} alt="Eureka logo" className="h-12 cursor-pointer" />
         </Link>
 
