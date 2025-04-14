@@ -45,7 +45,7 @@ export const ProfileCard = () => {
   }
 
   return (
-    <div className="bg-[rgba(190,199,255,0.28)] p-6 rounded-[48px] shadow-md max-w-md mx-auto mt-10 font-bree sm:p-12 space-y-10 ">
+    <div className="bg-[rgba(190,199,255,0.28)] p-6 rounded-[48px] shadow-md max-w-md mx-auto mt-10 mb-10 font-bree sm:p-12 space-y-10 ">
       <ProfileField
         label="Nombre:"
         value={formData.name}
