@@ -3,7 +3,8 @@ import { createBrowserRouter } from "react-router-dom";
 import {PackageDashboardRoute} from "./routes/PackageDashboardRoute";
 import { Layout } from "../components/Layouts/Layout";
 import { PackageDetailsRoute } from "./routes/PackageDetailsRoute";
-import { LoginRoute } from "./routes/LoginRoute";
+import { HomeRoute } from "./routes/HomeRoute";
+
 
 
 // TODO: Descomenta los campos y rellenalos con una ruta válida
@@ -15,9 +16,9 @@ export const router = createBrowserRouter(
             //children: [ExampleRoute]
         },
         {
-            path: "/login",
+            path: "/",
             element: < Layout/>,
-            children: [LoginRoute]
+            children: [HomeRoute]
         },        
         {
             path: "/packages",
