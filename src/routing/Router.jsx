@@ -4,6 +4,7 @@ import {PackageDashboardRoute} from "./routes/PackageDashboardRoute";
 import { MyAccountRoute } from "./routes/MyAccountRoute";
 import { Layout } from "../components/Layouts/Layout";
 import { PackageDetailsRoute } from "./routes/PackageDetailsRoute";
+import { HomeRoute } from "./routes/HomeRoute";
 
 // TODO: Descomenta los campos y rellenalos con una ruta válida
 export const router = createBrowserRouter(
@@ -11,7 +12,7 @@ export const router = createBrowserRouter(
         {
             path: "/",
             element: < Layout/>,
-            //children: [ExampleRoute]
+            children: [HomeRoute],
         },
         {
             path: "/packages",
