@@ -5,7 +5,7 @@ export const PackageDetailsCard = ({ pkg }) => {
   //TODO: Get data from API and apply params
 
   return (
-    <section className="sm:max-w-lg h-full sm:h-auto flex flex-col">
+    <section data-testid="package-details-card" className="sm:max-w-lg h-full sm:h-auto flex flex-col">
       <div className="p-5 bg-[#00328C] text-[#0050D3] sm:rounded-t-xl">
         <div className="inline p-2 bg-[#FFFFFF] rounded-xl">
           <p className="inline">Nombre del paquete: </p>
