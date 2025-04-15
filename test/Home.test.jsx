@@ -1,10 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import { Home } from "../src/components/home/Home"; 
-import { Footer } from "../src/components/Footer"; 
 
 describe("Home component", () => {
-  it(() => {
+  it("los botones existen", () => {
     render(<Home />);
     
     const loginButton = screen.getByRole("button", { name: /Iniciar sesión/i });
@@ -12,5 +11,12 @@ describe("Home component", () => {
     
     expect(loginButton).toBeInTheDocument();
     expect(registerButton).toBeInTheDocument();
+  });
+
+    it("funcionalidad de los botones", () => {
+      const onLoginClick = vi.fn();
+      const onRegisterClick = vi.fn();
+
+      render(<Home onLoginClick={onLoginClick} onRegisterClick={onRegisterClick} />);
   });
 });
