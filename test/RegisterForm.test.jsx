@@ -1,11 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
-import { FormularioRegistro } from "../src/components/FormularioRegistro"; 
+import { RegisterForm } from "../src/components/RegisterForm";  
+import { MemoryRouter } from "react-router-dom";
 
 describe("Formulario de registro", () => {
   it("debería renderizar los campos del formulario", () => {
-    render(<FormularioRegistro />);
+    render(<RegisterForm />);
 
     expect(screen.getByPlaceholderText("Nombre:")).toBeInTheDocument();
     expect(screen.getByPlaceholderText("Apellidos:")).toBeInTheDocument();
@@ -17,7 +18,7 @@ describe("Formulario de registro", () => {
   });
 
   it("debería mostrar errores si se envía el formulario vacío", async () => {
-    render(<FormularioRegistro />);
+    render(<RegisterForm />);
     await userEvent.click(screen.getByRole("button", { name: /enviar/i }));
 
     const errores = await screen.findAllByText("Campo obligatorio");
@@ -25,7 +26,7 @@ describe("Formulario de registro", () => {
   });
 
   it("debería mostrar error si las contraseñas no coinciden", async () => {
-    render(<FormularioRegistro />);
+    render(<RegisterForm />);
 
     await userEvent.type(screen.getByPlaceholderText("Contraseña:"), "123456");
     await userEvent.type(screen.getByPlaceholderText("Confirmar contraseña:"), "diferente");
@@ -38,7 +39,11 @@ describe("Formulario de registro", () => {
   it("debería enviar los datos correctamente si todo es válido", async () => {
     const spy = vi.spyOn(console, "log").mockImplementation(() => {});
 
-    render(<FormularioRegistro />);
+    render(
+      <MemoryRouter>
+        <RegisterForm />
+      </MemoryRouter>
+    );
 
     await userEvent.type(screen.getByPlaceholderText("Nombre:"), "Juan");
     await userEvent.type(screen.getByPlaceholderText("Apellidos:"), "Pérez");
