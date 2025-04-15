@@ -1,4 +1,3 @@
-
 export async function login(email, password) {
   const response = await fetch("http://localhost:8080/api/auth/login", {
     method: "POST",
@@ -7,10 +6,15 @@ export async function login(email, password) {
   });
 
   if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(errorText || "Login fallido");
+
+    try {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Login fallido");
+    } catch {
+
+      throw new Error("Login fallido");
+    }
   }
 
   return await response.json();
 }
-

@@ -1,6 +1,6 @@
 import { HomeView } from "../../views/HomeView";
 import { RegisterForm } from "../../components/RegisterForm";
-import { LoginForm } from "../../components/loginForm/loginForm";
+import { LoginForm } from "../../components/LoginForm";
 
 export const HomeRoute = {
     path: "/",
