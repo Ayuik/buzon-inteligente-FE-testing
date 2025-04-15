@@ -16,7 +16,7 @@ describe("Navbar", () => {
   });
 
   it("debería mostrar el menú si NO está en '/'", () => {
-    renderWithRouter(<Navbar />, { route: "/mi-cuenta" });
+    renderWithRouter(<Navbar />, { route: "/account" });
 
     const desktopMenu = screen.getByRole("navigation");
     const menuItem = within(desktopMenu).getByText("Mis paquetes");
@@ -25,7 +25,7 @@ describe("Navbar", () => {
   });
 
   it("debería mostrar el menú móvil al hacer clic en el botón", () => {
-    renderWithRouter(<Navbar />, { route: "/mi-cuenta" });
+    renderWithRouter(<Navbar />, { route: "/account" });
 
     const button = screen.getByRole("button");
     fireEvent.click(button);
@@ -37,7 +37,7 @@ describe("Navbar", () => {
   });
   
     it("debería cerrar el menú móvil al hacer clic en 'Mis paquetes'", () => {
-      renderWithRouter(<Navbar />, { route: "/mi-cuenta" });
+      renderWithRouter(<Navbar />, { route: "/account" });
   
       const button = screen.getByRole("button");
       fireEvent.click(button);
@@ -50,7 +50,7 @@ describe("Navbar", () => {
     });
 
   it("debería cerrar el menú móvil al hacer clic en 'Mis notificaciones'", () => {
-    renderWithRouter(<Navbar />, { route: "/mi-cuenta" });
+    renderWithRouter(<Navbar />, { route: "/account" });
   
     const button = screen.getByRole("button");
     fireEvent.click(button);
@@ -63,7 +63,7 @@ describe("Navbar", () => {
   });
   
   it("debería cerrar el menú móvil al hacer clic en 'Mi cuenta'", () => {
-    renderWithRouter(<Navbar />, { route: "/mi-cuenta" });
+    renderWithRouter(<Navbar />, { route: "/account" });
   
     const button = screen.getByRole("button");
     fireEvent.click(button);
@@ -76,7 +76,7 @@ describe("Navbar", () => {
   });
   
   it("debería cerrar el menú móvil al hacer clic en 'Cerrar sesión'", () => {
-    renderWithRouter(<Navbar />, { route: "/mi-cuenta" });
+    renderWithRouter(<Navbar />, { route: "/account" });
   
     const button = screen.getByRole("button");
     fireEvent.click(button);
@@ -86,5 +86,26 @@ describe("Navbar", () => {
     fireEvent.click(cerrarSesion);
   
     expect(screen.queryByTestId("mobile-menu")).not.toBeInTheDocument();
+  });
+
+  it("Navbar si se ha iniciado sesión", () => {
+    localStorage.setItem("token", "testToken");
+    renderWithRouter(<Navbar />, { route: "/account" });
+
+    const desktopMenu = screen.getByRole("navigation");
+    const options = ["Mis paquetes", "Mis notificaciones", "Mi cuenta", "Cerrar sesión"];
+
+    options.forEach(option => {
+      const menuItem = within(desktopMenu).getByText(option);
+      expect(menuItem).toBeInTheDocument();
+    });
+  });
+
+  it("Navbar si no se ha iniciado sesión", () => {
+    localStorage.removeItem("token");
+    renderWithRouter(<Navbar />, { route: "/" });
+
+    const logoLink = screen.getByAltText("Eureka logo").closest("a");
+    expect(logoLink).toHaveAttribute("href", "/");
   });
 });
