@@ -33,11 +33,16 @@ export function useLogin() {
 
     if (!formErrors.email && !formErrors.password) {
       try {
-        const { token } = await loginService(formData.email, formData.password);
-        localStorage.setItem("token", token);
-        setShowPopover(true);
+        const response = await loginService(formData.email, encodedPassword);
+        
+        if (response?.token) {
+          localStorage.setItem("token", response.token);
+          setShowPopover(true);
+        } else {
+          setLoginError("Credenciales inválidas. Verifica tu correo y contraseña.");
+        }
       } catch (err) {
-        setLoginError("No se ha podido conectar con el servidor.");
+        setLoginError("Error de conexión con el servidor.");
       }
     }
   };

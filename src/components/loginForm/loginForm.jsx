@@ -22,7 +22,7 @@ export function LoginForm() {
     >
       <div
         id="form-login"
-        className="flex flex-col items-center justify-center bg-[#bec7ff47] rounded-3xl w-full max-w-md py-10 px-6 md:px-10"
+        className="flex flex-col items-center justify-center bg-[#bec7ff47] rounded-3xl w-full max-w-md min-w-[28rem] py-10 px-6"
       >
         <div
           id="title-login"
@@ -84,7 +84,7 @@ export function LoginForm() {
         </button>
       </div>
 
-      <div id="register-link" className="flex justify-center font-bree text-[#00174b] text-sm mt-2">
+      <div id="register-link" className="flex justify-center gap-1 font-bree text-[#00174b] text-sm mt-2">
         ¿Aún no tienes cuenta?{" "}
         <Link to="/register" className="text-blue-600 hover:underline">
           Regístrate
