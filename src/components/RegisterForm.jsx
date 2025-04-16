@@ -65,7 +65,7 @@ export const RegisterForm = () => {
         </form>
             {errorMessage && (<p className="text-red-600 text-center mt-4 font-medium">{errorMessage}</p>)} 
              <p id="login-link-paragraph" className="text-center mt-4 text-sm text-[#00174B]">
-             ¿Ya tienes una cuenta? 
+             ¿Ya tienes una cuenta?   &nbsp;
              <a id="login-link" href="/login" className="text-blue-600 hover:underline">Iniciar Sesión</a></p>
         </div>
     </div>
