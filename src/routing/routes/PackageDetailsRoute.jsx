@@ -1,6 +1,6 @@
 import { PackageDetailsView } from "../../pages/packages/PackageDetailsView";
 
 export const PackageDetailsRoute = {
-    path: "/packages/:id",
+    path: "packages/:id",
     element: < PackageDetailsView/>
 }
