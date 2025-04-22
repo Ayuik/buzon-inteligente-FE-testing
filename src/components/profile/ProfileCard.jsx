@@ -71,14 +71,6 @@ export const ProfileCard = () => {
         value={formData.credential}
         editable={false}
       />
-      {!formData.credential && !editable && (
-        <div className="flex justify-start">
-          <Button
-            text="Generar credencial"
-            onClick={handleGenerateCredential}
-          />
-        </div>
-      )}
       <div className="flex justify-end gap-[0.5rem] mt-[1rem]">
         {editable ? (
           <>

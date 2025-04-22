@@ -1,6 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getUserProfile } from "../../services/ProfileService";
+import { useAuth } from "../../context/AuthProvider";
+
+const encodeBase64 = (str) => btoa(str);
 
 export const useProfileForm = () => {
+  const { credencial } = useAuth();
+  const token = localStorage.getItem("token");
+
+  const userId = localStorage.getItem("userId");
+
   const [editable, setEditable] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -9,16 +18,30 @@ export const useProfileForm = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    credential: "",
+    credential: credential || "",
   });
 
   const [errors, setErrors] = useState({});
-  const [credentialGenerated, setCredentialGenerated] = useState(!!formData.credential);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const user = await getUserProfile(userId, token);
+        setFormData((prev) => ({
+          ...prev,
+          name: user.userName || "",
+          surname: user.userSurname || "",
+          dni: user.userDni || "",
+          email: user.userEmail || "",
+          credential: user.permanentCredential || "",
+        }));
+      } catch (error) {
+        console.error("Error al obtener el perfil", error);
+      }
+    };
+
+      if (token &&  userId) fetchProfile();
+    }, [token, userId]);
 
   const validateForm = () => {
     const newErrors = {};
@@ -44,26 +67,38 @@ export const useProfileForm = () => {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleEdit = () => setEditable(true);
+
   const handleCancel = () => {
     setFormData((prev) => ({ ...prev, password:"", confirmPassword: "" }));
     setErrors({});
     setEditable(false);
   };
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!validateForm()) return;
-    // aqui iría el PUT a la API
-    alert("Datos guardados correctamente");
-    setEditable(false);
-  };
 
-  const handleGenerateCredential = () => {
-    // aqui iría la llamada a la API para generar la credencial
-    const fakecredential = "1234567890";
-    setFormData((prev) => ({ ...prev, credential: fakecredential }));
-    setCredentialGenerated(true);
-  }
+    try {
+      const dataToSend = {
+        userName: formData.name,
+        userSurname: formData.surname,
+        userDni: formData.dni,
+        userEmail: formData.email,
+        ...(formData.password ? { password: encodeBase64(formData.password) } : {}),
+      };
+
+      await updateUserProfile(userId, dataToSend, token);
+      alert("Perfil actualizado correctamente.");
+      setEditable(false);
+    } catch (error) {
+      console.error("Error al guardar", error);
+      alert("No se pudo guardar el perfil. Inténtalo de nuevo más tarde.");
+    }
+  };
 
   return {
     editable,
@@ -73,7 +108,5 @@ export const useProfileForm = () => {
     handleEdit,
     handleCancel,
     handleSave,
-    handleGenerateCredential,
-    credentialGenerated,
     };
   };
