@@ -65,4 +65,58 @@ describe("Formulario de registro", () => {
 
     spy.mockRestore();
   });
+
+  it("debería ejecutar onSubmit y mostrar el popover", async () => {
+    render(
+      <MemoryRouter>
+        <RegisterForm />
+      </MemoryRouter>
+    );
+  
+    await userEvent.type(screen.getByPlaceholderText("Nombre:"), "Ana");
+    await userEvent.type(screen.getByPlaceholderText("Apellidos:"), "Martínez");
+    await userEvent.type(screen.getByPlaceholderText("DNI:"), "87654321Z");
+    await userEvent.type(screen.getByPlaceholderText("Correo electrónico:"), "ana@mail.com");
+    await userEvent.type(screen.getByPlaceholderText("Contraseña:"), "passwordAna");
+    await userEvent.type(screen.getByPlaceholderText("Confirmar contraseña:"), "passwordAna");
+  
+    await userEvent.click(screen.getByRole("button", { name: /enviar/i }));
+  
+    const popover = await screen.findByTestId("success-popover");
+  
+    const addMock = vi.fn();
+    const removeMock = vi.fn();
+    popover.classList.add = addMock;
+    popover.classList.remove = removeMock;
+  
+    await userEvent.click(screen.getByRole("button", { name: /enviar/i }));
+  
+    expect(removeMock).toHaveBeenCalledWith("opacity-0", "invisible");
+    expect(addMock).toHaveBeenCalledWith("opacity-100", "visible");
+  });
+
+
+  it("debería ocultar el popover al hacer clic en aceptar", async () => {
+    render(
+      <MemoryRouter>
+        <RegisterForm />
+      </MemoryRouter>
+    );
+  
+    await userEvent.type(screen.getByPlaceholderText("Nombre:"), "Ana");
+    await userEvent.type(screen.getByPlaceholderText("Apellidos:"), "García");
+    await userEvent.type(screen.getByPlaceholderText("DNI:"), "87654321Z");
+    await userEvent.type(screen.getByPlaceholderText("Correo electrónico:"), "ana@mail.com");
+    await userEvent.type(screen.getByPlaceholderText("Contraseña:"), "miClaveSegura123");
+    await userEvent.type(screen.getByPlaceholderText("Confirmar contraseña:"), "miClaveSegura123");
+    await userEvent.click(screen.getByRole("button", { name: /enviar/i }));
+  
+    const mensajePopover = await screen.findByText(/Registro completado/i);
+    expect(mensajePopover).toBeInTheDocument();
+  
+    const botonAceptar = screen.getByRole("button", { name: /aceptar/i });
+    await userEvent.click(botonAceptar);
+  
+    expect(screen.queryByText(/Registro completado/i)).not.toBeInTheDocument();
+  });
 });
