@@ -20,7 +20,7 @@ export default function PackageDashboard() {
 
       <button
         onClick={() => setShowModal(true)}
-        className="bg-[#00328C] text-white px-14 py-3 rounded-lg hover:bg-blue-700 transition"
+        className="bg-custom-blue text-white px-14 py-3 rounded-lg hover:bg-custom-blue/50 transition"
       >
         Nuevo pedido
       </button>

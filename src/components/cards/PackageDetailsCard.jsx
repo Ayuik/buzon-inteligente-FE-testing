@@ -43,7 +43,7 @@ export const PackageDetailsCard = ({ pkg }) => {
         <div className="flex p-4 justify-center sm:p-0">
           <Link
             className="my-4 sm:my-0 sm:mx-auto bg-[rgba(0,50,140,0.93)] text-[#FFFFFF] rounded-xl"
-            to="/packages"
+            to="/user/packages"
           >
             <button className="cursor-pointer w-25 p-2">VOLVER</button>
           </Link>
