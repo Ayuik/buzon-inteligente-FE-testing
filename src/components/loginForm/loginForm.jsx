@@ -1,47 +1,107 @@
-import { useState } from "react";
-
+import { Link } from "react-router-dom";
+import { LoginSuccessPopover } from "../LoginSuccessPopover";
+import { useLogin } from "../useLogin";
 
 export function LoginForm() {
-    const [formData, setFormData] = useState({
-        email: "",
-        password: "",
-    })
+  const {
+    formData,
+    handleChange,
+    handleSubmit,
+    formErrors,
+    isDisabled,
+    loginError,
+    showPopover,
+    setShowPopover,
+  } = useLogin();
 
-    const handleChange = (e) => {
-        const { name, value } = e.target
-        setFormData(prev => ({...prev, [name]: value}))
-    }
+  return (
+    <form
+      id="form-component"
+      className="flex flex-col items-center justify-center min-h-screen px-4 font-bree"
+      onSubmit={handleSubmit}
+    >
+      <div
+        id="form-login"
+        className="flex flex-col items-center justify-center bg-[#bec7ff47] rounded-3xl w-full max-w-md min-w-[28rem] py-10 px-6"
+      >
+        <div
+          id="title-login"
+          className="text-[#00174b] text-2xl font-semibold mb-6"
+        >
+          <h2>Iniciar sesión</h2>
+        </div>
 
+        <div id="inputs-form" className="w-full space-y-4">
+          <input
+            id="input-email"
+            type="email"
+            name="email"
+            placeholder="Correo electrónico:"
+            onChange={handleChange}
+            className="w-full p-3 border border-[#737373] rounded-md text-sm placeholder-gray-400"
+          />
+          {formErrors.email && (
+            <p id="error-email" className="text-red-500 text-sm">
+              {formErrors.email}
+            </p>
+          )}
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(formData)
-    }
+          <input
+            id="input-password"
+            type="password"
+            name="password"
+            placeholder="Contraseña:"
+            value={formData.password}
+            onChange={handleChange}
+            className="w-full p-3 border border-[#737373] rounded-md text-sm placeholder-gray-400"
+          />
+          {formErrors.password && (
+            <p id="error-password" className="text-red-500 text-sm">
+              {formErrors.password}
+            </p>
+          )}
 
+          {loginError && (
+            <p id="login-error" className="text-red-600 text-sm">
+              {loginError}
+            </p>
+          )}
+          <div
+        id="button-login"
+        className="mt-6 mb-4 font-bree relative w-full max-w-md flex justify-center"
+      >
+        <button
+          id="submit-button"
+          type="submit"
+          disabled={isDisabled}
+          className={`w-2/3 max-w-xs py-3 rounded-full text-lg text-white ${
+            isDisabled
+              ? "bg-[#00328c] opacity-50 cursor-not-allowed"
+              : "bg-[#00328c] hover:opacity-90 cursor-pointer"
+          }`}
+        >
+          Enviar
+        </button>
+      </div>
 
-    
-    return (
-        <form class="flex flex-col items-center justify-center h-screen" onSubmit = { handleSubmit }>
-            <div className = "form-login" class="flex flex-col items-center justify-center p-[25px] bg-[#bec7ff47] rounded-[48px] w-[616px] h-[500px]"> 
+      <div id="register-link" className="flex justify-center gap-1 font-bree text-[#00174b] text-sm mt-2">
+        ¿Aún no tienes cuenta?{" "}
+        <Link to="/register" className="text-blue-600 hover:underline">
+          Regístrate
+        </Link>
+      </div>
 
-                <div className = "title-login" class="text-[#00174b] text-[26px] font-semibold mb-[30px] mt-[-100px] font-[bree-serif]">
-                    <h2>Iniciar sesión</h2>
-                </div>
-
-                <div className = "inputs-form"class="mt-[30px]">
-                    <input type="email" id="email" placeholder="Correo electrónico:" value={formData.email} onChange={handleChange} class="size-full p-[18px] border border-[#737373] border-solid rounded-[8px] ml-[32px] mr-[32px] w-[552px] h-[64px] mb-[30px] text-[12px] placeholder-gray-400 font-[bree-serif]"/>
-
-                    <input type="password" id="password" placeholder="Contraseña:" value={formData.password} onChange={handleChange}  class="size-full p-[18px] border border-[#737373] border-solid rounded-[8px] ml-[32px] mr-[32px] w-[552px] h-[64px] mb-[30px] text-[12px] placeholder-gray-400 font-[bree-serif]"/>
-                </div>
-            </div> 
-
-            <div className = "button-login" class="-mt-[140px] mb-[30px] font-[bree-serif]">
-                <button type="submit" class="bg-[#00328c] text-[#ffffff] w-[184px] h-[54px] m-[center] rounded-[32px] text-[22px] border-[none] cursor-pointer">Enviar</button>
-            </div>  
-            <div className = "forgot-password" class="font-[bree-serif] text-[#00174b] text-[14px] ">
-                <a href="#">¿Olvidaste tu contraseña?</a>  
-            </div>    
-        </form>
-    )
-    
+      {showPopover && (
+        <LoginSuccessPopover
+          title="Login exitoso"
+          message="¡Bienvenido/a! Has iniciado sesión correctamente."
+          to="/packages"
+          buttonLabel="Aceptar"
+          onAccept={() => setShowPopover(false)}
+        />
+      )}
+        </div>
+      </div>
+    </form>
+  );
 }

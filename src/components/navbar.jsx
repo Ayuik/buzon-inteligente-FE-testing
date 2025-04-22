@@ -6,23 +6,27 @@ import dropdownIcon from "../assets/dropdown.svg";
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+  };
+  const isHome = location.pathname === "/" || location.pathname === "/login" || location.pathname === "/register";
+  const isLoggedIn = !!localStorage.getItem("token");
 
-  const isHome = location.pathname === "/";
 
   return (
     <nav className="bg-[#00328C] text-white px-6 py-4">
       <div className="flex justify-between items-center">
-        <Link to="/">
+      <Link to={isLoggedIn ? "/packages" : "/"}>
           <img src={logo} alt="Eureka logo" className="h-12 cursor-pointer" />
         </Link>
 
         {!isHome && (
           <>
             <ul className="hidden md:flex space-x-10 font-semibold text-base">
-              <li><Link to="/mis-paquetes" className="hover:underline">Mis paquetes</Link></li>
-              <li><Link to="/mis-notificaciones" className="hover:underline">Mis notificaciones</Link></li>
-              <li><Link to="/mi-cuenta" className="hover:underline">Mi cuenta</Link></li>
-              <li><Link to="/cerrar-sesion" className="hover:underline">Cerrar sesión</Link></li>
+              <li><Link to="/packages" className="hover:underline">Mis paquetes</Link></li>
+              <li><Link to="/notifications" className="hover:underline">Mis notificaciones</Link></li>
+              <li><Link to="/account" className="hover:underline">Mi cuenta</Link></li>
+              <li><Link to="/" onClick={handleLogout} className="hover:underline">Cerrar sesión</Link></li>
             </ul>
             <div className="md:hidden relative">
             <button onClick={() => setMenuOpen(!menuOpen)} className="cursor-pointer">
@@ -32,16 +36,16 @@ export const Navbar = () => {
               {menuOpen && (
                 <ul className="absolute right-0 mt-2 w-48 bg-[#002f86] border border-white rounded-lg shadow-lg space-y-2 py-2 text-sm font-semibold z-50">
                   <li onClick={() => setMenuOpen(false)}>
-                    <Link to="/mis-paquetes" className="block px-4 py-2 hover:bg-white hover:text-[#002f86]">Mis paquetes</Link>
+                    <Link to="/packages" className="block px-4 py-2 hover:bg-white hover:text-[#002f86]">Mis paquetes</Link>
                   </li>
                   <li onClick={() => setMenuOpen(false)}>
-                    <Link to="/mis-notificaciones" className="block px-4 py-2 hover:bg-white hover:text-[#002f86]">Mis notificaciones</Link>
+                    <Link to="/notification" className="block px-4 py-2 hover:bg-white hover:text-[#002f86]">Mis notificaciones</Link>
                   </li>
                   <li onClick={() => setMenuOpen(false)}>
-                    <Link to="/mi-cuenta" className="block px-4 py-2 hover:bg-white hover:text-[#002f86]">Mi cuenta</Link>
+                    <Link to="/account" className="block px-4 py-2 hover:bg-white hover:text-[#002f86]">Mi cuenta</Link>
                   </li>
                   <li onClick={() => setMenuOpen(false)}>
-                    <Link to="/cerrar-sesion" className="block px-4 py-2 hover:bg-white hover:text-[#002f86]">Cerrar sesión</Link>
+                    <Link to="/" onClick={handleLogout} className="block px-4 py-2 hover:bg-white hover:text-[#002f86]">Cerrar sesión</Link>
                   </li>
                 </ul>
               )}
