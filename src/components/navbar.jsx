@@ -17,7 +17,7 @@ export const Navbar = () => {
     <nav className="bg-[#00328C] text-white px-6 py-4">
       <div className="flex justify-between items-center">
       <Link to={isLoggedIn ? "/packages" : "/"}>
-          <img src={logo} alt="Eureka logo" className="h-12 cursor-pointer" />
+          <img src={logo} alt="Eureka logo" className="h-10 cursor-pointer" />
         </Link>
 
         {!isHome && (
