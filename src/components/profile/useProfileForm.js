@@ -2,13 +2,9 @@ import { useEffect, useState } from "react";
 import { getUserProfile } from "../../services/ProfileService";
 import { useAuth } from "../../context/AuthProvider";
 
-const encodeBase64 = (str) => btoa(str);
-
 export const useProfileForm = () => {
-  const { credencial } = useAuth();
+  const { credential, userId } = useAuth();
   const token = localStorage.getItem("token");
-
-  const userId = localStorage.getItem("userId");
 
   const [editable, setEditable] = useState(false);
   const [formData, setFormData] = useState({
@@ -26,6 +22,7 @@ export const useProfileForm = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
+        if (!token || !userId) return;
         const user = await getUserProfile(userId, token);
         setFormData((prev) => ({
           ...prev,
@@ -40,7 +37,7 @@ export const useProfileForm = () => {
       }
     };
 
-      if (token &&  userId) fetchProfile();
+      fetchProfile();
     }, [token, userId]);
 
   const validateForm = () => {

@@ -11,7 +11,6 @@ export const ProfileCard = () => {
     handleEdit,
     handleCancel,
     handleSave,
-    handleGenerateCredential,
   } = useProfileForm();
 
   return (
@@ -50,22 +49,22 @@ export const ProfileCard = () => {
       />
       <ProfileField
         label="Contraseña:"
-        value={formData.password}
+        value={formData.Password}
         editable={editable}
         onChange={handleChange}
-        name="password"
-        error={errors.password}
+        name="Password"
+        error={errors.Password}
+        type="password"
       />
-      {editable && formData.password && (
-        <ProfileField
-          label="Confirmar contraseña:"
-          value={formData.confirmPassword}
-          editable={editable}
-          onChange={handleChange}
-          name="confirmPassword"
-          error={errors.confirmPassword}
-        />
-      )}
+      <ProfileField
+        label="Confirmar contraseña:"
+        value={formData.confirmPassword}
+        editable={editable}
+        onChange={handleChange}
+        name="confirmPassword"
+        error={errors.confirmPassword}
+        type="password"
+      />
       <ProfileField
         label="Credencial Permanente:"
         value={formData.credential}

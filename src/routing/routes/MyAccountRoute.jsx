@@ -1,6 +1,6 @@
 import {MyAccountPage} from "../../pages/myAccount/MyAccountPage"
 
 export const MyAccountRoute = {
-    path: "/myaccount",
+    path: "myaccount",
     element: <MyAccountPage />
 }

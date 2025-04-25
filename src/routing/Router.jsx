@@ -20,17 +20,9 @@ export const router = createBrowserRouter(
 
           element: <PrivateRoute />,
 
-          children: [PackageDashboardRoute, PackageDetailsRoute],
+          children: [PackageDashboardRoute, PackageDetailsRoute, MyAccountRoute],
         },
       ],
     },
-
-        {
-            path: "/myaccount",
-            element: < Layout/>,
-            children: [MyAccountRoute]
-        }
-
   ],
-  { basename: "/" }
 );
