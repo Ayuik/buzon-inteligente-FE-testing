@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export function LoginSuccessPopover({ title, message, buttonLabel = "Aceptar", to = "/packages", onAccept }) {
+export function SuccessModal({ title, message, buttonLabel = "Aceptar", to = "/packages", onAccept }) {
   return (
     <div
       id="success-popover"

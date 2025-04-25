@@ -1,11 +1,10 @@
-import { RegisterSuccessPopover } from "./components/RegisterSuccessPopover";
-//import { AppRouter } from "./routing/AppRouter";
+import { AppRouter } from "./routing/AppRouter";
 import "./styles/styles.css";
 
 
 function App() {
   
-  return <RegisterSuccessPopover />
+  return <AppRouter />
 }
 
 export default App

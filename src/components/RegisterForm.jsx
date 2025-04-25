@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { RegisterSuccessPopover } from "../RegisterSuccessPopover"; // Ajusta la ruta si es necesario
+import { SuccessModal } from "./SuccessModal";
 import { Link } from 'react-router-dom';
 
 export const RegisterForm = () => {
@@ -75,7 +75,11 @@ export const RegisterForm = () => {
               </Link>
             </p>
             </div>
-            {showPopover && <RegisterSuccessPopover />}     
+            {showPopover && <SuccessModal title="¡Registro completado!"
+                            message="Ya puedes iniciar sesión"
+                            to="/login"
+                            buttonLabel="Aceptar"
+                            onAccept={() => setShowPopover(false)}/>}     
         </div>
     );
 }   

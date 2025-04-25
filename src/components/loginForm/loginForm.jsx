@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { LoginSuccessPopover } from "../LoginSuccessPopover";
+import { SuccessModal } from "../SuccessModal";
 import { useLogin } from "../useLogin";
 
 export function LoginForm() {
@@ -91,7 +91,7 @@ export function LoginForm() {
                     </div>
 
                     {showPopover && (
-                        <LoginSuccessPopover
+                        <SuccessModal
                             title="Login exitoso"
                             message="¡Bienvenido/a! Has iniciado sesión correctamente."
                             to="/packages"
