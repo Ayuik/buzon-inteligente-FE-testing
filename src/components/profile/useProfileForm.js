@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getUserProfile } from "../../services/ProfileService";
+import { getUserProfile, updateUserProfile } from "../../services/ProfileService";
 import { useAuth } from "../../context/AuthProvider";
 
 export const useProfileForm = () => {
@@ -85,7 +85,7 @@ export const useProfileForm = () => {
         userSurname: formData.surname,
         userDni: formData.dni,
         userEmail: formData.email,
-        ...(formData.password ? { password: encodeBase64(formData.password) } : {}),
+        ...(formData.password ? { userPassword: encodeBase64(formData.password) } : {}),
       };
 
       await updateUserProfile(userId, dataToSend, token);
