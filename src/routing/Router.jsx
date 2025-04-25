@@ -17,7 +17,9 @@ export const router = createBrowserRouter(
         HomeRoute,
         {
           path: "user/",
+
           element: <PrivateRoute />,
+
           children: [PackageDashboardRoute, PackageDetailsRoute],
         },
       ],
