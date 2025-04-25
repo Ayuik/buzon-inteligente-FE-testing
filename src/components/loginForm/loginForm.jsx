@@ -94,7 +94,7 @@ export function LoginForm() {
                         <SuccessModal
                             title="Login exitoso"
                             message="¡Bienvenido/a! Has iniciado sesión correctamente."
-                            to="/packages"
+                            to="/user/packages"
                             buttonLabel="Aceptar"
                             onAccept={() => setShowPopover(false)}
                         />
