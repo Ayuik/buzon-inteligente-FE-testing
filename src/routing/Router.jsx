@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 //import { ExampleRoute } from "./routes/ExampleRoute";
 import { PackageDashboardRoute } from "./routes/PackageDashboardRoute";
+import { MyAccountRoute } from "./routes/MyAccountRoute";
 import { Layout } from "../components/Layouts/Layout";
 import { PackageDetailsRoute } from "./routes/PackageDetailsRoute";
 import { HomeRoute } from "./routes/HomeRoute";
@@ -19,10 +20,9 @@ export const router = createBrowserRouter(
 
           element: <PrivateRoute />,
 
-          children: [PackageDashboardRoute, PackageDetailsRoute],
+          children: [PackageDashboardRoute, PackageDetailsRoute, MyAccountRoute],
         },
       ],
     },
   ],
-  { basename: "/" }
 );
