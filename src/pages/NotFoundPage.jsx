@@ -23,7 +23,7 @@ export const NotFoundPage = () => {
         <p className="inline-block mx-auto text-4xl">Página no encontrada</p>
         <Link
           to={destination}
-          className="inline-block mx-auto p-4 hover:bg-[#00328C] text-xl text-white bg-[#4574FF] rounded-xl"
+          className="p-4 mt-4 rounded-full text-white bg-[#00328c] hover:opacity-90 mx-auto cursor-pointer"
         >
           Vuelve a la página principal
         </Link>
