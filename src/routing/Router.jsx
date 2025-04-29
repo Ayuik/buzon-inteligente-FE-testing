@@ -6,10 +6,12 @@ import { Layout } from "../components/Layouts/Layout";
 import { PackageDetailsRoute } from "./routes/PackageDetailsRoute";
 import { HomeRoute } from "./routes/HomeRoute";
 import { PrivateRoute } from "./routes/utils/PrivateRoute";
+import { NotFoundRoute } from "./routes/utils/NotFoundRoute";
 
 // TODO: Descomenta los campos y rellenalos con una ruta válida
 export const router = createBrowserRouter(
   [
+    NotFoundRoute,
     {
       path: "/",
       element: <Layout />,
