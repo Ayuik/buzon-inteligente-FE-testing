@@ -52,7 +52,7 @@ export const ProfileCard = () => {
         value={formData.Password}
         editable={editable}
         onChange={handleChange}
-        name="Password"
+        name="password"
         error={errors.Password}
         type="password"
       />

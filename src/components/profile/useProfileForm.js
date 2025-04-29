@@ -85,7 +85,7 @@ export const useProfileForm = () => {
         userSurname: formData.surname,
         userDni: formData.dni,
         userEmail: formData.email,
-        ...(formData.password ? { userPassword: encodeBase64(formData.password) } : {}),
+        userPassword: btoa(formData.password),
       };
 
       await updateUserProfile(userId, dataToSend, token);
