@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap");
 @import "tailwindcss";
 
-:root {
+#root {
   width: 100vw;
   height: 100vh;
 }
@@ -15,7 +15,7 @@
 
   /* TODO: add true colors */
   --color-primary: #001d3d;
-  --color-secondary: #326bbb;    
+  --color-secondary: #326bbb;
   --color-third: #ffcc05;
   --color-accent: #dd1c1a;
   --color-custom-blue: #00328C;
@@ -28,5 +28,3 @@
     @apply m-0 p-0 box-border;
   }
 }
-
-

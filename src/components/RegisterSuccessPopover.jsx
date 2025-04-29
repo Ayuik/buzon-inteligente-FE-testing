@@ -1,26 +1,25 @@
-import { forwardRef } from "react";
-import { Link } from "react-router-dom";
-export const RegisterSuccessPopover = forwardRef(({ message, buttonLabel = "Aceptar", to = "/login", onAccept }, ref) => {
+import React from "react";
+import { Link } from 'react-router-dom';
+
+export const RegisterSuccessPopover = () => {
   return (
     <div
-      id="success-popover"
-      ref={ref}
-      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 inline-block w-[90%] max-w-sm text-sm text-[#00174B] transition-opacity duration-300 bg-[#E1E5FF] border border-[#00174B] rounded-lg shadow-lg opacity-0 invisible">
-      <div id="success-popover-header" className="px-4 py-3 border-b border-[#00174B] rounded-t-lg">
-        <h3 id="success-message-title" className="font-semibold text-center text-lg">
-          {message}
+    id="success-popover"
+    className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-[90%] max-w-md bg-[#E1E5FF] text-[#00174B] shadow-lg border border-gray-300 rounded-2xl transition-opacity duration-300 font-bree p-10">
+      <Link to="/login" title="Go to login">
+        <span className="absolute top-[5%] right-[7%] text-[2.5rem] font-bold text-[#00174B] cursor-pointer">
+         X
+        </span>
+      </Link>
+      <div>
+        <h3 className="text-[200%] font-semibold mb-[4%]">
+          ¡Registro completado!
         </h3>
-      </div>
-      <div id="success-popover-body" className="px-4 py-2 text-center">
-        <Link to={to}>
-          <button
-            id="success-accept-button"
-            onClick={onAccept}
-            className="bg-[#00174B] hover:opacity-90 text-white px-4 py-2 rounded-md mt-2">
-            {buttonLabel}
-          </button>
-        </Link>
+        <p className="text-[145%]">
+          Ya puedes iniciar sesión
+        </p>
       </div>
     </div>
   );
-});
+};
+
