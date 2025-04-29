@@ -17,16 +17,12 @@ export function LoginForm() {
     return (
         <form
             id="form-component"
-            className="flex flex-col items-center justify-center min-h-screen px-4 font-bree"
+            className="bg-[#bec7ff47] flex flex-col items-center justify-center h-full w-full font-bree lg:h-auto gap-5 p-8 lg:rounded-3xl lg:mx-auto lg:max-w-[28rem] "
             onSubmit={handleSubmit}
         >
-            <div
-                id="form-login"
-                className="flex flex-col items-center justify-center bg-[#bec7ff47] rounded-3xl w-full max-w-md min-w-[28rem] py-10 px-6"
-            >
                 <div
                     id="title-login"
-                    className="text-[#00174b] text-2xl font-semibold mb-6"
+                    className="text-[#00174b] text-2xl font-semibold"
                 >
                     <h2>Iniciar sesión</h2>
                 </div>
@@ -68,7 +64,7 @@ export function LoginForm() {
                     )}
                     <div
                         id="button-login"
-                        className="mt-6 mb-4 font-bree relative w-full max-w-md flex justify-center"
+                        className="mt-6 mb-4 relative flex justify-center"
                     >
                         <button
                             id="submit-button"
@@ -83,8 +79,8 @@ export function LoginForm() {
                         </button>
                     </div>
 
-                    <div id="register-link" className="flex justify-center gap-1 font-bree text-[#00174b] text-sm mt-2">
-                        ¿Aún no tienes cuenta?{" "}
+                    <div id="register-link" className="flex flex-col justify-center text-center gap-1 text-[#00174b] text-sm mt-2 lg:flex-row">
+                        ¿Aún no tienes cuenta?
                         <Link to="/register" className="text-blue-600 hover:underline">
                             Regístrate
                         </Link>
@@ -100,7 +96,6 @@ export function LoginForm() {
                         />
                     )}
                 </div>
-            </div>
         </form>
     );
 }

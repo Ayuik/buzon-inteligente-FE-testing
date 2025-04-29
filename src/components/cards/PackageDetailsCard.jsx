@@ -5,18 +5,18 @@ export const PackageDetailsCard = ({ pkg }) => {
   //TODO: Get data from API and apply params
 
   return (
-    <section className="sm:max-w-lg">
+    <section className="sm:max-w-lg h-full sm:h-auto flex flex-col">
       <div className="p-5 bg-[#00328C] text-[#0050D3] sm:rounded-t-xl">
         <div className="inline p-2 bg-[#FFFFFF] rounded-xl">
           <p className="inline">Nombre del paquete: </p>
           <p className="inline text-[#F9835E]">Barbie</p>
         </div>
       </div>
-      <div className="bg-[rgba(190,199,255,0.28)] p-4 sm:rounded-b-xl">
+      <div className="bg-[rgba(190,199,255,0.28)] flex-1 flex flex-col justify-center p-4 sm:rounded-b-xl">
         <div className="grid grid-cols-1 grid-rows-[auto_auto] gap-y-5 sm:gap-x-4 sm:grid-cols-4">
-          <div className="row-start-1 flex justify-center bg-[#FFFFFF] sm:rounded-4xl sm:col-start-1 sm:col-end-3">
+          <div className="row-start-1 flex w-full h-56 md:h-auto justify-center bg-[#FFFFFF] sm:rounded-4xl sm:col-start-1 sm:col-end-3">
             <img
-              className="object-contain w-40 p-4 sm:max-w-42"
+              className="object-contain p-4 md:max-w-42"
               src={packageBox}
               alt="preview paquete"
             />
