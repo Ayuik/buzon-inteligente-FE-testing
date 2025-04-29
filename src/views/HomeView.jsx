@@ -8,11 +8,11 @@ export const HomeView = () => {
 
   const isRoot = location.pathname === "/";
   return (
-        <div className="flex flex-col sm:flex-row w-full h-full">
-            <div id="img-home" className="w-full h-full sm:w-1/2">
+        <div className="flex flex-col sm:flex-row w-full flex-1">
+            <div id="img-home" className="w-full w-[100%] sm:w-1/2">
                 <img src="/img/Captura.PNG" alt="" className=" h-full object-cover"/>
             </div>
-            <div className="w-full sm:w-1/2 flex flex-col h-full items-center justify-center">
+            <div className="w-full sm:w-1/2 flex flex-1 flex-col items-center justify-center">
               {isRoot && (
                 <Home
                   onLoginClick={() => navigate("/login")}
