@@ -6,7 +6,7 @@ export const AppRouter = () => {
   return(
     <AuthProvider>
 
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
 
     </AuthProvider>
   ) 

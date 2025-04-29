@@ -23,9 +23,9 @@ export const Navbar = () => {
         {!isHome && (
           <>
             <ul className="hidden md:flex space-x-10 font-semibold text-base">
-              <li><Link to="/packages" className="hover:underline">Mis paquetes</Link></li>
+              <li><Link to="/user/packages" className="hover:underline">Mis paquetes</Link></li>
               <li><Link to="/notifications" className="hover:underline">Mis notificaciones</Link></li>
-              <li><Link to="/account" className="hover:underline">Mi cuenta</Link></li>
+              <li><Link to="/user/myaccount" className="hover:underline">Mi cuenta</Link></li>
               <li><Link to="/" onClick={handleLogout} className="hover:underline">Cerrar sesión</Link></li>
             </ul>
             <div className="md:hidden relative">
