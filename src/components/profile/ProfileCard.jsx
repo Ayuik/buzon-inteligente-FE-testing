@@ -14,7 +14,7 @@ export const ProfileCard = () => {
   } = useProfileForm();
 
   return (
-    <div className="bg-[rgba(190,199,255,0.28)] p-[1.5rem] rounded-[3rem] shadow-md max-w-md mx-auto mt-[2.5rem] font-bree sm:p-[3rem] space-y-[2.5rem]">
+    <div className="md:bg-[rgba(190,199,255,0.28)] p-[1.5rem] rounded-[3rem] md:shadow-md max-w-md mx-auto mt-[2.5rem] font-bree sm:p-[3rem] space-y-[2.5rem]">
       <ProfileField
         label="Nombre:"
         value={formData.name}
@@ -52,7 +52,7 @@ export const ProfileCard = () => {
         value={formData.Password}
         editable={editable}
         onChange={handleChange}
-        name="password"
+        name="Password"
         error={errors.Password}
         type="password"
       />
@@ -70,7 +70,7 @@ export const ProfileCard = () => {
         value={formData.credential}
         editable={false}
       />
-      <div className="flex justify-end gap-[0.5rem] mt-[1rem]">
+      <div className="flex justify-center gap-[0.5rem] mt-[1rem]">
         {editable ? (
           <>
             <Button text="Guardar cambios" onClick={handleSave} />
