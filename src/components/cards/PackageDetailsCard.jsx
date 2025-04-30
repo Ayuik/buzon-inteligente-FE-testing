@@ -5,7 +5,7 @@ export const PackageDetailsCard = ({ pkg }) => {
   //TODO: Get data from API and apply params
 
   return (
-    <section className="sm:max-w-lg h-full sm:h-auto flex flex-col">
+    <section data-testid="package-details-card" className="sm:max-w-lg h-full sm:h-auto flex flex-col">
       <div className="p-5 bg-[#00328C] text-[#0050D3] sm:rounded-t-xl">
         <div className="inline p-2 bg-[#FFFFFF] rounded-xl">
           <p className="inline">Nombre del paquete: </p>
@@ -41,7 +41,7 @@ export const PackageDetailsCard = ({ pkg }) => {
           </div>
         </div>
         <div className="flex p-4 justify-center sm:p-0">
-          <Link
+          <Link data-testid="packages-link"
             className="my-4 sm:my-0 sm:mx-auto bg-[rgba(0,50,140,0.93)] text-[#FFFFFF] rounded-xl"
             to="/user/packages"
           >

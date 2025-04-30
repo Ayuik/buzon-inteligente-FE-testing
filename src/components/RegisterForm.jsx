@@ -56,7 +56,7 @@ export const RegisterForm = () => {
           id="input-name"
           type="text"
           placeholder="Nombre:"
-          {...register("nombre", { required: "Required field" })}
+          {...register("nombre", { required: "Campo obligatorio" })}
           className="w-full p-3 border border-[#737373] rounded-md text-sm placeholder-gray-400"
         />
         {errors.nombre && (
@@ -66,7 +66,7 @@ export const RegisterForm = () => {
           id="input-apellidos"
           type="text"
           placeholder="Apellidos:"
-          {...register("apellidos", { required: "Required field" })}
+          {...register("apellidos", { required: "Campo obligatorio" })}
           className="w-full p-3 border border-[#737373] rounded-md text-sm placeholder-gray-400"
         />
         {errors.apellidos && (
@@ -77,7 +77,7 @@ export const RegisterForm = () => {
           type="text"
           placeholder="DNI:"
           {...register("dni", {
-            required: "Required field",
+            required: "Campo obligatorio",
             pattern: {
               value: /^\d{8}[A-Za-z]$/,
               message: "Formato de DNI no válido (8 cifras y una letra)",
@@ -93,7 +93,7 @@ export const RegisterForm = () => {
           type="email"
           placeholder="Correo electrónico:"
           {...register("email", {
-            required: "Required field",
+            required: "Campo obligatorio",
             pattern: {
               value: /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/,
               message: "Correo no válido",
@@ -109,7 +109,7 @@ export const RegisterForm = () => {
           type="password"
           placeholder="Contraseña:"
           {...register("password", {
-            required: "Required field",
+            required: "Campo obligatorio",
             minLength: {
               value: 8,
               message: "La contraseña debe tener al menos 8 caracteres",
@@ -125,7 +125,7 @@ export const RegisterForm = () => {
           type="password"
           placeholder="Confirmar contraseña:"
           {...register("confirmPassword", {
-            required: "Required field",
+            required: "Campo obligatorio",
             validate: (value) =>
               value === watch("password") || "Las contraseñas no coinciden",
           })}
