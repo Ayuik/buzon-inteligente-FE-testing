@@ -13,7 +13,6 @@ export default function PackageCard({ pkg }) {
 
           <p className={`${pkg.collected ? "text-green-300" : "text-yellow-300"}`}>
             <span>Estado: </span>
-            {/* TODO: mapear todos los estados disponibles */}
             {pkg.collected ? "Recogido" : "Pendiente"}
           </p>
 

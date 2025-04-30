@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import packageBox from "../../assets/package_box.png";
 
 export const PackageDetailsCard = ({ pkg }) => {
-  //TODO: Get data from API and apply params
 
   return (
     <section data-testid="package-details-card" className="sm:max-w-lg h-full sm:h-auto flex flex-col">

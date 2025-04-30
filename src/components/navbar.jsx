@@ -36,13 +36,13 @@ export const Navbar = () => {
               {menuOpen && (
                 <ul data-testid="mobile-menu" className="absolute right-0 mt-2 w-48 bg-[#002f86] border border-white rounded-lg shadow-lg space-y-2 py-2 text-sm font-semibold z-50">
                   <li onClick={() => setMenuOpen(false)}>
-                    <Link to="/packages" className="block px-4 py-2 hover:bg-white hover:text-[#002f86]">Mis paquetes</Link>
+                    <Link to="/user/packages" className="block px-4 py-2 hover:bg-white hover:text-[#002f86]">Mis paquetes</Link>
                   </li>
                   <li onClick={() => setMenuOpen(false)}>
                     <Link to="/notification" className="block px-4 py-2 hover:bg-white hover:text-[#002f86]">Mis notificaciones</Link>
                   </li>
                   <li onClick={() => setMenuOpen(false)}>
-                    <Link to="/account" className="block px-4 py-2 hover:bg-white hover:text-[#002f86]">Mi cuenta</Link>
+                    <Link to="/user/myaccount" className="block px-4 py-2 hover:bg-white hover:text-[#002f86]">Mi cuenta</Link>
                   </li>
                   <li onClick={() => setMenuOpen(false)}>
                     <Link to="/" onClick={handleLogout} className="block px-4 py-2 hover:bg-white hover:text-[#002f86]">Cerrar sesión</Link>
