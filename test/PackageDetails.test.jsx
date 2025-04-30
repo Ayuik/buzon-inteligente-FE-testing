@@ -19,13 +19,13 @@ describe("PackageDetailsCard", () => {
     renderWithRouter(<PackageDetailsCard />, {
       routes: (
         <Route
-          path="/packages"
+          path="/user/packages"
           element={<div data-testid="packages-page">Packages Page</div>}
         />
       ),
     });
 
-    const destinationLink = "/packages";
+    const destinationLink = "/user/packages";
     const volverLink = screen.getByTestId("packages-link");
     expect(volverLink).toHaveAttribute("href", destinationLink);
 

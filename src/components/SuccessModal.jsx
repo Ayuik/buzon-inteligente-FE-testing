@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export function SuccessModal({ title, message, buttonLabel = "Aceptar", to = "/packages", onAccept }) {
   return (
     <div
-      id="success-popover"
+      data-testid="success-popover"
       className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-[90%] max-w-md bg-[#E1E5FF] text-[#00174B] shadow-lg border border-gray-300 rounded-2xl transition-opacity duration-300 font-bree"
     >
       <div className="px-6 py-4 border-[#00174B] rounded-t-2xl text-center">
