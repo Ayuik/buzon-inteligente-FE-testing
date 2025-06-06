@@ -39,13 +39,13 @@ describe("Register User", () => {
       cy.get('[data-testid="success-popover"]').should("not.exist");
     });
 
-    it("unmatching passwords", () => {
+    it.only("unmatching passwords", () => {
       cy.getByPlaceholder("Nombre:").type("minnieW");
       cy.getByPlaceholder("Apellidos:").type("mouse");
       cy.getByPlaceholder("Correo electrónico:").type(randomEmail());
       cy.getByPlaceholder("DNI:").type(randomDNI());
       cy.getByPlaceholder("Contraseña:").type("Prueba123");
-      cy.getByPlaceholder("Confirmar contraseña:").type("Prueba123");
+      cy.getByPlaceholder("Confirmar contraseña:").type("Prueba222");
       cy.get("button").contains("Enviar").click();
       cy.get('[data-testid="success-popover"]').should("not.exist");
     });
@@ -61,8 +61,9 @@ describe("Register User", () => {
       cy.get('[data-testid="success-popover"]').should("not.exist");
     });
   });
+
   context("User Journey from Login form", () => {
-    it.only("register new user", () => {
+    it("register new user", () => {
       cy.visit("http://localhost:5173/login");
       cy.get("a").contains("Regístrate").click();
       cy.location("pathname").should("equal", "/register");
