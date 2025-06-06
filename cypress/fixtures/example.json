@@ -1,0 +1,11 @@
+{
+    "userId": "2",
+    "userDni": "87654321B",
+    "userName": "Freddie",
+    "userSurname": "Mercury",
+    "email": "freddiemercury@example.com",
+    "password": "mercu12345",
+    "newUserName": "Brian",
+    "newUserSurname": "May",
+    "newPassword": "brian12345"
+}
