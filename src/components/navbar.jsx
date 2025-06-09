@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logoEureka.png";
 import dropdownIcon from "../assets/dropdown.svg";
+import { useAuth } from "../context/AuthProvider";
 
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const {setToken} = useAuth
   const handleLogout = () => {
     localStorage.removeItem('token');
+    setToken(null);
   };
   const isHome = location.pathname === "/" || location.pathname === "/login" || location.pathname === "/register";
   const isLoggedIn = !!localStorage.getItem("token");
