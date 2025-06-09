@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { login as loginService } from "../services/AuthService";
+import { useAuth } from "../context/AuthProvider";
 
 export function useLogin() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [formErrors, setFormErrors] = useState({ email: "", password: "" });
   const [loginError, setLoginError] = useState("");
   const [showPopover, setShowPopover] = useState(false);
+  const {setToken} = useAuth();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -35,6 +37,7 @@ export function useLogin() {
       try {
          const { token } = await loginService(formData.email, btoa (formData.password));
         localStorage.setItem("token", token);
+        setToken(token)
         setShowPopover(true);
       } catch (err) {
         setLoginError(err.message);

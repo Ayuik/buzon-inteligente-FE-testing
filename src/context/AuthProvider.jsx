@@ -7,9 +7,9 @@ export const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState(null);
   const [credential, setCredential] = useState(null);
   const [userId, setUserId] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("token"))
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
     if (!token) {
       setAuthState(false);
       return;
@@ -31,10 +31,10 @@ export const AuthProvider = ({ children }) => {
     };
 
     validateUser();
-  }, []);
+  }, [token]);
 
   return (
-    <AuthContext.Provider value={{ authState, credential, userId }}>
+    <AuthContext.Provider value={{ authState, credential, userId, setToken }}>
       {children}
     </AuthContext.Provider>
   );
