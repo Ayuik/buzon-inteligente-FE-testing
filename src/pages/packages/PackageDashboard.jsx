@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { codesData } from "./mockData";
+import { getPackagesData } from "./packagesData";
 import PackageCard from "../../components/cards/PackageCard";
 import AddPackageModal from "../../components/modals/AddPackageModal";
 
 export default function PackageDashboard() {
   const [showModal, setShowModal] = useState(false);
-  const allPackages = codesData.flatMap((code) => code.packages);
+  const allPackages = getPackagesData();
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-evenly bg-gray-50 p-6">
@@ -14,7 +14,7 @@ export default function PackageDashboard() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center mx-auto px-4">
         {allPackages.map((pkg) => (
-          <PackageCard key={pkg.id} pkg={pkg} />
+          <PackageCard key={pkg.accessCodeId} pkg={pkg} />
         ))}
       </div>
 

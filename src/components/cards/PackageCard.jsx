@@ -8,17 +8,17 @@ export default function PackageCard({ pkg }) {
 
         <div className="text-xs sm:text-lg flex flex-col justify-start items-start gap-2">
 
-          <p className="text-gray-500"><span className=" text-custom-blue font-bold">Nombre: </span>{pkg.name}</p>
-          <p className="text-gray-500"><span className=" text-custom-blue font-bold">Código: </span>{pkg.code}</p>
+          <p className="text-gray-500"><span className=" text-custom-blue font-bold">Nombre: </span>{pkg.accessCodeName}</p>
+          <p className="text-gray-500"><span className=" text-custom-blue font-bold">Código: </span>{pkg.accessCode}</p>
 
           <p className={`${pkg.collected ? "text-green-300" : "text-yellow-300"}`}>
             <span>Estado: </span>
-            {pkg.collected ? "Recogido" : "Pendiente"}
+            {pkg.accessCodeStatusName}
           </p>
 
         </div>
 
-        <Link to={`/user/packages/${pkg.code}`}>
+        <Link to={`/user/packages/${pkg.accessCodeId}`}>
           <button className="text-white bg-custom-blue hover:bg-custom-blue/50 px-4 py-2 rounded">
             Ver detalles
           </button>
