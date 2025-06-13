@@ -43,7 +43,6 @@ describe("Register User", () => {
     });
     it("empty fields", () => {
       cy.get("button").contains("Enviar").click();
-      cy.wait("@registerRequest");
       cy.get('[data-testid="success-popover"]').should("not.exist");
     });
 
@@ -55,7 +54,6 @@ describe("Register User", () => {
       cy.getByPlaceholder("Contraseña:").type("Prueba123");
       cy.getByPlaceholder("Confirmar contraseña:").type("Prueba222");
       cy.get("button").contains("Enviar").click();
-      cy.wait("@registerRequest");
       cy.get('[data-testid="success-popover"]').should("not.exist");
     });
 
@@ -67,7 +65,6 @@ describe("Register User", () => {
       cy.getByPlaceholder("Contraseña:").type("Prueba123");
       cy.getByPlaceholder("Confirmar contraseña:").type("Prueba123");
       cy.get("button").contains("Enviar").click();
-      cy.wait("@registerRequest");
       cy.get('[data-testid="success-popover"]').should("not.exist");
     });
   });
