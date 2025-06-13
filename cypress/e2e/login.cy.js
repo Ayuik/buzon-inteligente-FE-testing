@@ -1,13 +1,17 @@
 import exampleUser from "../fixtures/example.json";
 describe("Login User", () => {
+  beforeEach(() => {
+    cy.visit("/");
+    cy.intercept("GET", "http://localhost:8080/api/profile/user/**").as("userDashboard");
+  });
   context("User Journey from Homepage", () => {
     it.only("login user", () => {
-      cy.visit("http://localhost:5173");
       cy.get("button").eq(0).click();
       cy.location("pathname").should("equal", "/login");
       cy.getByPlaceholder("Correo electrónico:").type(exampleUser.email);
       cy.getByPlaceholder("Contraseña:").type(exampleUser.password);
       cy.get("button").contains("Enviar").click();
+      cy.wait("@userDashboard");
       cy.get('[data-testid="success-popover"]').contains("Login exitoso");
       cy.contains("Aceptar").click();
       cy.location("pathname").should("equal", "/user/packages");
@@ -15,12 +19,13 @@ describe("Login User", () => {
   });
   context("User Journey from Register form", () => {
     it("login user", () => {
-      cy.visit("http://localhost:5173/register");
+      cy.visit("register");
       cy.get("a").contains("Iniciar Sesión").click();
       cy.location("pathname").should("equal", "/login");
       cy.getByPlaceholder("Correo electrónico:").type(exampleUser.email);
       cy.getByPlaceholder("Contraseña:").type(exampleUser.password);
       cy.get("button").contains("Enviar").click();
+      cy.wait("@userDashboard");
       cy.get('[data-testid="success-popover"]').contains("Login exitoso");
       cy.contains("Aceptar").click();
       cy.location("pathname").should("equal", "/user/packages");
@@ -28,7 +33,7 @@ describe("Login User", () => {
   });
   context("unhappy paths", () => {
     beforeEach(() => {
-      cy.visit("http://localhost:5173/login");
+      cy.visit("login");
     });
     it("empty fields", () => {
       cy.contains("Enviar").should("be.disabled");
