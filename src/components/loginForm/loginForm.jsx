@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { SuccessModal } from "../SuccessModal";
 import { useLogin } from "../useLogin";
+import { useAuth } from "../../context/AuthProvider";
 
 export function LoginForm() {
     const {
@@ -13,6 +14,7 @@ export function LoginForm() {
         showPopover,
         setShowPopover,
     } = useLogin();
+    const { authState } = useAuth();
 
     return (
         <form
@@ -86,7 +88,7 @@ export function LoginForm() {
                         </Link>
                     </div>
 
-                    {showPopover && (
+                    {showPopover && authState &&(
                         <SuccessModal
                             title="Login exitoso"
                             message="¡Bienvenido/a! Has iniciado sesión correctamente."
