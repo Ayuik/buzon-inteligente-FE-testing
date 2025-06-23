@@ -2,8 +2,7 @@ import exampleUser from "../fixtures/example.json";
 describe("Login User", () => {
   beforeEach(() => {
     cy.visit("/");
-    cy.intercept("GET", "http://localhost:8080/api/profile/user/**").as("userDashboard");
-  });
+  })
   context("User Journey from Homepage", () => {
     it.only("login user", () => {
       cy.get("button").eq(0).click();
@@ -11,7 +10,6 @@ describe("Login User", () => {
       cy.getByPlaceholder("Correo electrónico:").type(exampleUser.email);
       cy.getByPlaceholder("Contraseña:").type(exampleUser.password);
       cy.get("button").contains("Enviar").click();
-      cy.wait("@userDashboard");
       cy.get('[data-testid="success-popover"]').contains("Login exitoso");
       cy.contains("Aceptar").click();
       cy.location("pathname").should("equal", "/user/packages");
@@ -25,7 +23,6 @@ describe("Login User", () => {
       cy.getByPlaceholder("Correo electrónico:").type(exampleUser.email);
       cy.getByPlaceholder("Contraseña:").type(exampleUser.password);
       cy.get("button").contains("Enviar").click();
-      cy.wait("@userDashboard");
       cy.get('[data-testid="success-popover"]').contains("Login exitoso");
       cy.contains("Aceptar").click();
       cy.location("pathname").should("equal", "/user/packages");

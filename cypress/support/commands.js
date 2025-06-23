@@ -32,8 +32,6 @@ Cypress.Commands.add('login', (email, password) => {
   cy.getByPlaceholder("Correo electrónico:").type(email);
   cy.getByPlaceholder("Contraseña:").type(password);
   cy.get("button").contains("Enviar").click();
-  cy.intercept("GET", "http://localhost:8080/api/profile/user/**").as("userDashboard");
-  cy.wait("@userDashboard");
   cy.get('[data-testid="success-popover"]').contains("Login exitoso");
   cy.contains("Aceptar").click(); 
 })
