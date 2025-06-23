@@ -2,8 +2,10 @@ import { randomDNI, randomEmail } from "./register.cy";
 import exampleUser from "../fixtures/example.json";
 
 describe("Edit user's details", () => {
-  context("User Journey from /packages", () => {
-    it.only("new details are sent", () => {
+
+  context("User Journey from /packages", () =>{
+    it("new details are sent", () => {
+
       const newDNI = randomDNI();
       const newEmail = randomEmail();
 

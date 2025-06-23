@@ -1,8 +1,10 @@
 import exampleUser from "../fixtures/example.json";
 describe("Login User", () => {
+  beforeEach(() => {
+    cy.visit("/");
+  })
   context("User Journey from Homepage", () => {
     it.only("login user", () => {
-      cy.visit("http://localhost:5173");
       cy.get("button").eq(0).click();
       cy.location("pathname").should("equal", "/login");
       cy.getByPlaceholder("Correo electrónico:").type(exampleUser.email);
@@ -15,7 +17,7 @@ describe("Login User", () => {
   });
   context("User Journey from Register form", () => {
     it("login user", () => {
-      cy.visit("http://localhost:5173/register");
+      cy.visit("register");
       cy.get("a").contains("Iniciar Sesión").click();
       cy.location("pathname").should("equal", "/login");
       cy.getByPlaceholder("Correo electrónico:").type(exampleUser.email);
@@ -28,7 +30,7 @@ describe("Login User", () => {
   });
   context("unhappy paths", () => {
     beforeEach(() => {
-      cy.visit("http://localhost:5173/login");
+      cy.visit("login");
     });
     it("empty fields", () => {
       cy.contains("Enviar").should("be.disabled");

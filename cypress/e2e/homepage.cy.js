@@ -1,6 +1,6 @@
 describe("homepage", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:5173");
+    cy.visit("/");
   })
   
   it("eureka logo is visible", () => {

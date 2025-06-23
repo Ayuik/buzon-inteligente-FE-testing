@@ -28,11 +28,10 @@ Cypress.Commands.add("getByPlaceholder", (placeholder) => {
 })
 
 Cypress.Commands.add('login', (email, password) => {
-  cy.visit('http://localhost:5173/login')
+  cy.visit('/login')
   cy.getByPlaceholder("Correo electrónico:").type(email);
   cy.getByPlaceholder("Contraseña:").type(password);
   cy.get("button").contains("Enviar").click();
   cy.get('[data-testid="success-popover"]').contains("Login exitoso");
-  cy.contains("Aceptar").click();
- 
+  cy.contains("Aceptar").click(); 
 })
